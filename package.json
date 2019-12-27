@@ -6,6 +6,10 @@
   "repository": "git@github.com:TheMarini/tic-tac-toe-api.git",
   "author": "Bruno Marini <bruno.marini1@gmail.com>",
   "license": "MIT",
+	"scripts": {
+		"lint": "npx eslint . --ext .js",
+		"lint-fix": "npx eslint . --ext .js --fix"
+	},
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^14.0.0",
