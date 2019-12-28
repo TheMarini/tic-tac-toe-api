@@ -6,9 +6,9 @@ const router = express.Router();
 const controller = require('./../../controllers/gameController.js');
 
 // Create
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 	try {
-		res.send(controller.create());
+		res.status(200).send(await controller.create());
 	} catch (e) {
 		res.status(e.status).send(e.message);
 	}
