@@ -11,11 +11,15 @@ router.post('/', async (req, res) => {
 		let game = await controller.create();
 		res.status(200).send({ id: game.id, firstPlayer: game.playerTurn });
 	} catch (e) {
-		res.status(e.status).send(e.message);
+		res.status(e.status).send( {msg: e.message} );
 	}
 });
+
+router.post('/:id/movement', async (req, res) => {
+	try {
+		res.status(200).send(await controller.movement(req.body));
 	} catch (e) {
-		res.status(e.status).send(e.message);
+		res.status(e.status).send( {msg: e.message} );
 	}
 });
 
