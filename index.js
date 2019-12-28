@@ -19,6 +19,9 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors());
 
+// Routes
+app.use(require('./src/routes/v1'));
+
 // --- LISTEN ---
 app.listen(port, _ => {
 	try {
