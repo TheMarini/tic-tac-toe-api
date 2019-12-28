@@ -8,12 +8,10 @@ module.exports = {
 		// Generate an UUID. If already exists, generate again
 		for (var id = uuid(); await this.retrieve(id); uuid());
 
-		let game = {
+		return database.write({
 			id,
 			firstPlayer: this.randomPlayer(),
-		};
-
-		return game;
+		});
 	},
 
 	retrieve (id) {
