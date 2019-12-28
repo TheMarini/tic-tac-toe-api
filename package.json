@@ -7,9 +7,10 @@
   "author": "Bruno Marini <bruno.marini1@gmail.com>",
   "license": "MIT",
   "scripts": {
+		"start": "node index.js",
+		"dev": "nodemon -r dotenv/config index.js",
     "lint": "npx eslint . --ext .js",
-    "lint-fix": "npx eslint . --ext .js --fix",
-		"dev": "nodemon -r dotenv/config index.js"
+    "lint-fix": "npx eslint . --ext .js --fix"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
