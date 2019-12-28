@@ -10,7 +10,7 @@ module.exports = {
 
 		return database.write({
 			id,
-			firstPlayer: this.randomPlayer(),
+			player: this.randomPlayer(),
 		});
 	},
 
