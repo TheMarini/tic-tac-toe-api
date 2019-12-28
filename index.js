@@ -19,7 +19,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors());
 
-// START SERVER
+// --- LISTEN ---
 app.listen(port, _ => {
 	try {
 	  console.log(`Server is running at ${port}`);
