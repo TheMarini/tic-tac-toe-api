@@ -10,7 +10,10 @@ module.exports = {
 
 		return database.create({
 			id,
-			playerTurn: this.randomPlayer(),
+			turn: {
+				number: 0,
+				player: this.randomPlayer()
+			},
 			positions: Array(3).fill(Array(3).fill())
 		});
 	},
@@ -34,7 +37,7 @@ module.exports = {
 			if (this.isPlayerTurn(game, move.player)) {
 				if (this.isPositionEmpty(game, row, column)) {
 					game.positions[row][column] = move.player;
-					game.playerTurn = this.switchPlayer(move.player);
+					game.turn.player = this.switchPlayer(move.player);
 					database.update(game);
 				} else {
 					throw { status: 400, message: `Posição já ocupada por ${game.positions[row][column]}` };
@@ -48,7 +51,7 @@ module.exports = {
 	},
 	
 	isPlayerTurn (game, player) {
-		return game.playerTurn == player;
+		return game.turn.player == player;
 	},
 	
 	isPositionEmpty (game, row, column) {

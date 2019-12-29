@@ -9,7 +9,7 @@ const controller = require('./../../controllers/gameController.js');
 router.post('/', async (req, res) => {
 	try {
 		let game = await controller.create();
-		res.status(200).send({ id: game.id, firstPlayer: game.playerTurn });
+		res.status(200).send({ id: game.id, firstPlayer: game.turn.player });
 	} catch (e) {
 		res.status(e.status).send( {msg: e.message} );
 	}
