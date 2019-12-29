@@ -26,16 +26,18 @@ module.exports = {
 	async movement (move) {
 		let game = await this.retrieve(move.id);
 		
-		console.log("move", move.position);
-		
 		if (game) {
+			let flippedPosition = this.flipPositionHorizontally(move.position.y, move.position.x)
+			let row = flippedPosition[0];
+			let column = flippedPosition[1];			
+			
 			if (this.isPlayerTurn(game, move.player)) {
-				if (this.isPositionEmpty(game, move.position.x, move.position.y)) {
-					game.positions[move.position.x][move.position.y] = move.player;
+				if (this.isPositionEmpty(game, row, column)) {
+					game.positions[row][column] = move.player;
 					game.playerTurn = this.switchPlayer(move.player);
 					database.update(game);
 				} else {
-					throw { status: 400, message: `Posição já ocupada por ${game.positions[move.position.x][move.position.y]}` };
+					throw { status: 400, message: `Posição já ocupada por ${game.positions[row][column]}` };
 				}
 			} else {
 				throw { status: 400, message: "Não é turno do jogador" };
@@ -49,10 +51,20 @@ module.exports = {
 		return game.playerTurn == player;
 	},
 	
-	isPositionEmpty (game, x, y) {
-		return game.positions[x][y] == null;
+	isPositionEmpty (game, row, column) {
+		return game.positions[row][column] == null;
 	},
 	
+	flipPositionHorizontally (row, column) {
+		let	dictionary = [
+			[ [2,0], [2,1], [2,2] ],
+			[ null, null, null ],
+			[ [0,0], [0,1], [0,2] ]
+		];
+		
+		return dictionary[row][column] || [row, column];
+	},
+
 	switchPlayer (player) {
 		return player == 'X' ? 'O' : 'X';
 	},
