@@ -1,7 +1,16 @@
 const path = require('path');
+const fs = require('fs');
+
 const jsonfile = require('jsonfile');
 
 const file = path.resolve(__dirname, 'database.json');
+
+// Create file if it doesn't exist
+try {
+  fs.statSync(file);
+} catch (e) {
+	fs.writeFileSync(file, '[]');
+}
 
 module.exports = {
   retrieve(id) {
