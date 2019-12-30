@@ -1,6 +1,12 @@
 const uuid = require('uuid/v4');
 const database = require('../database');
 
+const	flipDictionary = [
+	[[2, 0], [2, 1], [2, 2]],
+	[null, null, null],
+	[[0, 0], [0, 1], [0, 2]],
+];
+
 module.exports = {
   async create() {
     // Generate an UUID. If already exists, generate again
@@ -71,13 +77,7 @@ module.exports = {
   },
 
   flipPositionHorizontally(row, column) {
-    const	dictionary = [
-      [[2, 0], [2, 1], [2, 2]],
-      [null, null, null],
-      [[0, 0], [0, 1], [0, 2]],
-    ];
-
-    return dictionary[row][column] || [row, column];
+    return flipDictionary[row][column] || [row, column];
   },
 
   switchPlayer(player) {
