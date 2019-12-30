@@ -16,9 +16,9 @@ module.exports = {
   retrieve(id) {
     return jsonfile.readFile(file)
       .then((rows) => {
-        if (id) {
+        if (id)
           return rows.find((row) => row.id === id);
-        }
+					
         return rows;
       });
   },

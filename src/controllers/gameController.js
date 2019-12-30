@@ -8,9 +8,13 @@ const	flipDictionary = [
 ];
 
 module.exports = {
+	retrieve(id) {
+    return database.retrieve(id);
+  },
+
   async create() {
 		let id;
-		
+
 		// Generate an UUID. If already exists, generate again
     for (id = uuid(); await this.retrieve(id); uuid());
 
@@ -22,14 +26,6 @@ module.exports = {
       },
       positions: Array(3).fill(Array(3).fill()),
     });
-  },
-
-  retrieve(id) {
-    return database.retrieve(id);
-  },
-
-  randomPlayer() {
-    return Math.round(Math.random()) ? 'X' : 'O';
   },
 
   async movement(move) {
@@ -47,6 +43,7 @@ module.exports = {
           game.turn.player = this.switchPlayer(move.player);
           database.update(game);
 
+					// Winnable
           if (game.turn.number >= 5) {
             if (this.isPlayerWinner(move.player, game.positions)) {
               return {
@@ -70,6 +67,14 @@ module.exports = {
     }
   },
 
+	randomPlayer() {
+		return Math.round(Math.random()) ? 'X' : 'O';
+	},
+
+	switchPlayer(player) {
+		return player == 'X' ? 'O' : 'X';
+	},
+
   isPlayerTurn(game, player) {
     return game.turn.player == player;
   },
@@ -78,20 +83,17 @@ module.exports = {
     return game.positions[row][column] == null;
   },
 
+	// Switch position start corner from matrix (top left <-> bottom left)
   flipPositionHorizontally(row, column) {
     return flipDictionary[row][column] || [row, column];
-  },
-
-  switchPlayer(player) {
-    return player == 'X' ? 'O' : 'X';
   },
 
   isPlayerWinner(player, positions) {
     let count = 0;
 
     // - Horizontal -
-    for (const row of positions) {
-      for (const column of row) {
+    for (let row of positions) {
+      for (let column of row) {
         if (column == player) count++;
         else break;
       }
@@ -118,6 +120,7 @@ module.exports = {
     count = 0;
 
     // - Diagonal -
+		// From top left to bottom right
     for (let diagonal = 0; diagonal < positions.length; diagonal++) {
       if (positions[diagonal][diagonal] == player) count++;
       else break;
@@ -126,6 +129,7 @@ module.exports = {
     if (count === 3) return true;
     count = 0;
 
+		// From bottom left to top right
     for (let diagonal = 0; diagonal < positions.length; diagonal++) {
       const flipped = this.flipPositionHorizontally(diagonal, diagonal);
       if (positions[flipped[0]][flipped[1]] == player) count++;
