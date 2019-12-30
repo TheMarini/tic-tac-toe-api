@@ -13,11 +13,11 @@ npm install
    npm run dev
    ```
    - 2.2. Production (compiles and minifies):
-     - 2.2. Build:
+     - 2.2.1. Build:
      ```
      yarn run build
      ```
-     - 2.2. Start:
+     - 2.2.2. Start:
      ```
      yarn run start
      ```
