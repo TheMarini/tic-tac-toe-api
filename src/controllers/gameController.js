@@ -45,7 +45,11 @@ module.exports = {
                 msg: 'Partida finalizada',
                 winner: move.player,
               };
-            }
+            } else if (game.turn.number === 9)
+							return {
+								msg: 'Partida finalizada',
+								winner: "Draw",
+							};
           }
         } else {
           throw { status: 400, message: `Posição já ocupada por ${game.positions[row][column]}` };
