@@ -1,6 +1,7 @@
+const path = require('path');
 const jsonfile = require('jsonfile');
 
-const file = `${__dirname}/database.json`;
+const file = path.resolve(__dirname, 'database.json');
 
 module.exports = {
   retrieve(id) {
