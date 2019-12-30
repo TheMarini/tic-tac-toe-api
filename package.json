@@ -7,8 +7,9 @@
   "author": "Bruno Marini <bruno.marini1@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
+    "start": "node dist/bundle.js",
     "dev": "nodemon -r dotenv/config index.js",
+		"build": "webpack",
     "lint": "npx eslint . --ext .js",
     "lint-fix": "npx eslint . --ext .js --fix"
   },
