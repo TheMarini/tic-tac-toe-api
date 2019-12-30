@@ -1,6 +1,4 @@
-
 const express = require('express');
-
 const router = express.Router();
 
 const controller = require('./../../controllers/gameController.js');
@@ -16,6 +14,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Movement
 router.post('/:id/movement', async (req, res) => {
   try {
     res.status(200).send(await controller.movement(req.body));
