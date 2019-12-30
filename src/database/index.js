@@ -9,7 +9,7 @@ const file = path.resolve(__dirname, 'database.json');
 try {
   fs.statSync(file);
 } catch (e) {
-	fs.writeFileSync(file, '[]');
+	fs.writeFileSync(file, '[]\n');
 }
 
 module.exports = {
