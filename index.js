@@ -24,7 +24,7 @@ app.use(require('./src/routes/v1'));
 // --- LISTEN ---
 app.listen(port, () => {
   try {
-    console.log(`Server is running at ${port}`);
+    console.log(`Server API is running at ${port}`);
   } catch (e) {
     console.error(e);
   }

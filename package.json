@@ -1,6 +1,6 @@
 {
   "name": "TicTacToe-API",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API for a quick and simple Tic Tac Toe match.",
   "main": "index.js",
   "repository": "git@github.com:TheMarini/tic-tac-toe-api.git",
