@@ -9,8 +9,10 @@ const	flipDictionary = [
 
 module.exports = {
   async create() {
-    // Generate an UUID. If already exists, generate again
-    for (let id = uuid(); await this.retrieve(id); uuid());
+		let id;
+		
+		// Generate an UUID. If already exists, generate again
+    for (id = uuid(); await this.retrieve(id); uuid());
 
     return database.create({
       id,
