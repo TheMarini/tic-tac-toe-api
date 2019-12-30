@@ -1,6 +1,6 @@
 # Tic Tac Toe - API
 ## :ledger: Documentation
-Project proposal and why it project exists on [this file](https://github.com/TheMarini/tic-tac-toe-api/blob/develop/docs/pt-br/enunciado.pdf) (PT-BR).
+Routes, endpoints, project proposal and why it exists on [this file](https://github.com/TheMarini/tic-tac-toe-api/blob/develop/docs/pt-br/enunciado.pdf) (PT-BR).
 ## :fire: Installation
 By default, this project uses [NPM](https://www.npmjs.com) as depedency/package management.
 1. Install dependencies:
