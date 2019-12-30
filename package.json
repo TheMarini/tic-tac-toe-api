@@ -1,0 +1,33 @@
+{
+  "name": "TicTacToe-API",
+  "version": "1.0.0",
+  "description": "API for a quick and simple Tic Tac Toe match.",
+  "main": "index.js",
+  "repository": "git@github.com:TheMarini/tic-tac-toe-api.git",
+  "author": "Bruno Marini <bruno.marini1@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/bundle.js",
+    "dev": "nodemon -r dotenv/config index.js",
+		"build": "webpack",
+    "lint": "npx eslint . --ext .js",
+    "lint-fix": "npx eslint . --ext .js --fix"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonfile": "^5.0.0",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "nodemon": "^2.0.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
