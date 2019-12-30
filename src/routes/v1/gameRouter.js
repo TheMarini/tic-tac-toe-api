@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
     const game = await controller.create();
     res.status(200).send({ id: game.id, firstPlayer: game.turn.player });
   } catch (e) {
+		console.error(e);
     res.status(e.status).send({ msg: e.message });
   }
 });
@@ -19,6 +20,7 @@ router.post('/:id/movement', async (req, res) => {
   try {
     res.status(200).send(await controller.movement(req.body));
   } catch (e) {
+		console.error(e);
     res.status(e.status).send({ msg: e.message });
   }
 });
